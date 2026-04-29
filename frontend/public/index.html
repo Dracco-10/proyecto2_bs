@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distribuidora El Progreso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── LOGIN ─────────────────────────────────────── -->
+<div id="login-page">
+  <div class="login-card">
+    <div class="login-brand">
+      <span class="brand-tag">SISTEMA DE GESTIÓN</span>
+      <h1>Distribuidora<br>El Progreso</h1>
+    </div>
+    <form id="login-form">
+      <div class="form-group">
+        <label>Usuario</label>
+        <input type="text" id="login-username" placeholder="jramirez" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <div id="login-error" class="alert alert-error hidden"></div>
+      <button type="submit" class="btn btn-primary btn-full">Ingresar →</button>
+    </form>
+    <p class="login-hint">Usuario de prueba: <code>jramirez</code> / <code>admin123</code></p>
+  </div>
+</div>
+
+<!-- ── APP ───────────────────────────────────────── -->
+<div id="app" class="hidden">
+
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-brand">EP</div>
+      <nav>
+        <a class="nav-item active" data-section="dashboard">
+          <span class="nav-icon">▦</span> Dashboard
+        </a>
+        <a class="nav-item" data-section="productos">
+          <span class="nav-icon">◈</span> Productos
+        </a>
+        <a class="nav-item" data-section="clientes">
+          <span class="nav-icon">◉</span> Clientes
+        </a>
+        <a class="nav-item" data-section="ventas">
+          <span class="nav-icon">◎</span> Ventas
+        </a>
+        <a class="nav-item" data-section="reportes">
+          <span class="nav-icon">◐</span> Reportes
+        </a>
+      </nav>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="user-chip">
+        <span class="user-avatar" id="user-avatar">J</span>
+        <span id="user-name">Usuario</span>
+      </div>
+      <button id="btn-logout" class="btn-logout">Salir</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- DASHBOARD -->
+    <section id="section-dashboard" class="section active">
+      <div class="page-header">
+        <h2>Dashboard</h2>
+        <span class="page-sub">Resumen general</span>
+      </div>
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card loading">Cargando...</div>
+      </div>
+      <div class="dash-bottom">
+        <div class="dash-panel">
+          <h3>Productos con stock bajo</h3>
+          <div id="stock-bajo-list"></div>
+        </div>
+        <div class="dash-panel">
+          <h3>Últimas ventas</h3>
+          <div id="ultimas-ventas-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section id="section-productos" class="section hidden">
+      <div class="page-header">
+        <div>
+          <h2>Productos</h2>
+          <span class="page-sub">Inventario completo</span>
+        </div>
+        <button class="btn btn-primary" onclick="Productos.abrirCrear()">+ Nuevo producto</button>
+      </div>
+      <div class="table-wrap">
+        <table id="tabla-productos">
+          <thead>
+            <tr>
+              <th>#</th><th>Nombre</th><th>Categoría</th><th>Proveedor</th>
+              <th>Precio</th><th>Stock</th><th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CLIENTES -->
+    <section id="section-clientes" class="section hidden">
+      <div class="page-header">
+        <div>
+          <h2>Clientes</h2>
+          <span class="page-sub">Base de clientes</span>
+        </div>
+        <button class="btn btn-primary" onclick="Clientes.abrirCrear()">+ Nuevo cliente</button>
+      </div>
+      <div class="table-wrap">
+        <table id="tabla-clientes">
+          <thead>
+            <tr>
+              <th>#</th><th>Nombre</th><th>Teléfono</th><th>Email</th><th>Dirección</th><th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VENTAS -->
+    <section id="section-ventas" class="section hidden">
+      <div class="page-header">
+        <div>
+          <h2>Ventas</h2>
+          <span class="page-sub">Historial de ventas</span>
+        </div>
+        <button class="btn btn-primary" onclick="Ventas.abrirCrear()">+ Nueva venta</button>
+      </div>
+      <div class="table-wrap">
+        <table id="tabla-ventas">
+          <thead>
+            <tr>
+              <th>#</th><th>Fecha</th><th>Cliente</th><th>Empleado</th><th>Total</th><th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- REPORTES -->
+    <section id="section-reportes" class="section hidden">
+      <div class="page-header">
+        <div>
+          <h2>Reportes</h2>
+          <span class="page-sub">Análisis y estadísticas</span>
+        </div>
+        <button class="btn btn-secondary" onclick="Reportes.exportarCSV()">↓ Exportar CSV</button>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="top-productos" onclick="Reportes.cargar('top-productos', this)">Top Productos</button>
+        <button class="tab" data-tab="por-empleado" onclick="Reportes.cargar('por-empleado', this)">Por Empleado</button>
+        <button class="tab" data-tab="por-categoria" onclick="Reportes.cargar('por-categoria', this)">Por Categoría</button>
+        <button class="tab" data-tab="clientes-activos" onclick="Reportes.cargar('clientes-activos', this)">Clientes Activos</button>
+      </div>
+      <div id="reporte-contenido" class="table-wrap"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ── MODAL ─────────────────────────────────────── -->
+<div id="modal" class="modal hidden">
+  <div class="modal-overlay" onclick="Modal.cerrar()"></div>
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modal-titulo"></h3>
+      <button class="modal-close" onclick="Modal.cerrar()">✕</button>
+    </div>
+    <div id="modal-cuerpo"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
