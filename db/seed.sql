@@ -135,16 +135,16 @@ INSERT INTO productos (nombre, descripcion, precio_unitario, stock, id_categoria
 --  Texto plano: admin123 para admin, vendedor123 para vendedores
 -- ============================================================
 INSERT INTO usuarios (username, password_hash, rol, id_empleado) VALUES
-('jramirez',   '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'admin',    1),
-('alopez',     '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'vendedor', 2),
-('caju',       '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'vendedor', 3),
-('scoyoy',     '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'vendedor', 4),
-('mxocop',     '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'vendedor', 5),
-('vhernandez', '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'vendedor', 6),
-('dtahual',    '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'vendedor', 7),
-('pmorales',   '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'admin',    8),
-('hsamayoa',   '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'vendedor', 9),
-('lchitay',    '$2b$10$KIX0dXkTtPuoJ1VaqmxfSurllf/oTNhT/Yr0YPY0X4Kg9j9c2DLBC', 'vendedor',10);
+('jramirez',   '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'admin',    1),
+('alopez',     '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'vendedor', 2),
+('caju',       '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'vendedor', 3),
+('scoyoy',     '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'vendedor', 4),
+('mxocop',     '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'vendedor', 5),
+('vhernandez', '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'vendedor', 6),
+('dtahual',    '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'vendedor', 7),
+('pmorales',   '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'admin',    8),
+('hsamayoa',   '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'vendedor', 9),
+('lchitay',    '$2b$10$YgEpE9qJxlvGAp2C8O.hTOJeVaAWPyMevYPJUwhuEsHJCOzpPihqm', 'vendedor',10);
 
 -- ============================================================
 --  VENTAS y DETALLE_VENTA  (30 ventas con múltiples detalles)
